@@ -3,6 +3,7 @@ package org.example.data_transfer_object.mapper;
 import org.example.data_transfer_object.dto.CasaDTO;
 import org.example.data_transfer_object.dto.ProfesorDTO;
 import org.example.data_transfer_object.entity.Casa;
+import org.example.data_transfer_object.entity.Estudiante;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class CasaMapper {
         
         List<String> estudiantesNombres = casa.getEstudiantes()
             .stream()
-            .map(estudiante -> estudiante.getNombre())
+            .map(Estudiante::getNombre)
             .collect(Collectors.toList());
         
         return new CasaDTO(
