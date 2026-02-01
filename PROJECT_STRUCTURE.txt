@@ -1,0 +1,102 @@
+DATA_TRANSFER_OBJECT/
+│
+├── build.gradle                    # Gradle build configuration
+├── settings.gradle                 # Gradle settings
+├── gradlew                         # Gradle wrapper (executable)
+├── gradlew.bat                     # Gradle wrapper for Windows
+│
+├── README.md                       # Project documentation
+├── IMPLEMENTATION_SUMMARY.md       # Detailed implementation report
+├── ARCHITECTURE.md                 # Architecture diagrams and explanations
+│
+└── src/
+    ├── main/
+    │   ├── java/org/example/data_transfer_object/
+    │   │   │
+    │   │   ├── DataTransferObjectApplication.java     # Spring Boot main class
+    │   │   ├── DataInitializer.java                   # Sample data loader
+    │   │   │
+    │   │   ├── entity/                                # JPA Entities (6 classes)
+    │   │   │   ├── Casa.java                          # House entity
+    │   │   │   ├── Profesor.java                      # Professor entity
+    │   │   │   ├── Estudiante.java                    # Student entity
+    │   │   │   ├── Mascota.java                       # Pet entity
+    │   │   │   ├── Asignatura.java                    # Subject entity
+    │   │   │   └── EstudianteAsignatura.java          # Student-Subject relationship
+    │   │   │
+    │   │   ├── repository/                            # JPA Repositories (5 interfaces)
+    │   │   │   ├── CasaRepository.java
+    │   │   │   ├── ProfesorRepository.java
+    │   │   │   ├── EstudianteRepository.java
+    │   │   │   ├── MascotaRepository.java
+    │   │   │   └── AsignaturaRepository.java
+    │   │   │
+    │   │   ├── dto/                                   # Data Transfer Objects (6 classes)
+    │   │   │   ├── CasaDTO.java                       # House DTO
+    │   │   │   ├── ProfesorDTO.java                   # Professor DTO
+    │   │   │   ├── EstudianteDTO.java                 # Student DTO
+    │   │   │   ├── MascotaDTO.java                    # Pet DTO
+    │   │   │   ├── AsignaturaDTO.java                 # Subject DTO
+    │   │   │   └── AsignaturaCalificacionDTO.java     # Subject-Grade embedded DTO
+    │   │   │
+    │   │   ├── mapper/                                # Entity to DTO Mappers (6 classes)
+    │   │   │   ├── CasaMapper.java
+    │   │   │   ├── ProfesorMapper.java
+    │   │   │   ├── EstudianteMapper.java
+    │   │   │   ├── MascotaMapper.java
+    │   │   │   ├── AsignaturaMapper.java
+    │   │   │   └── AsignaturaCalificacionMapper.java
+    │   │   │
+    │   │   ├── service/                               # Business Logic Services (5 classes)
+    │   │   │   ├── CasaService.java
+    │   │   │   ├── ProfesorService.java
+    │   │   │   ├── EstudianteService.java
+    │   │   │   ├── MascotaService.java
+    │   │   │   └── AsignaturaService.java
+    │   │   │
+    │   │   └── controller/                            # REST Controllers (5 classes)
+    │   │       ├── CasaController.java               # GET /api/casas, /api/casas/{id}
+    │   │       ├── ProfesorController.java           # GET /api/profesores, /api/profesores/{id}
+    │   │       ├── EstudianteController.java         # GET /api/estudiantes, /api/estudiantes/{id}
+    │   │       ├── MascotaController.java            # GET /api/mascotas, /api/mascotas/{id}
+    │   │       └── AsignaturaController.java         # GET /api/asignaturas, /api/asignaturas/{id}
+    │   │
+    │   └── resources/
+    │       └── application.properties                # Database and JPA configuration
+    │
+    └── test/
+        └── java/org/example/data_transfer_object/
+            └── DataTransferObjectApplicationTests.java
+
+TOTAL FILES: 37 Java classes + 3 documentation files + configuration files
+
+LAYERS:
+  - Controllers: 5 classes (REST endpoints)
+  - Services: 5 classes (business logic)
+  - Mappers: 6 classes (Entity → DTO conversion)
+  - DTOs: 6 classes (data transfer objects)
+  - Repositories: 5 interfaces (data access)
+  - Entities: 6 classes (JPA entities)
+  - Utilities: 1 class (data initializer)
+
+ENDPOINTS: 10 GET endpoints (2 per controller)
+  /api/casas           - List all houses
+  /api/casas/{id}      - Get house by ID
+  /api/profesores      - List all professors
+  /api/profesores/{id} - Get professor by ID
+  /api/estudiantes     - List all students
+  /api/estudiantes/{id}- Get student by ID
+  /api/mascotas        - List all pets
+  /api/mascotas/{id}   - Get pet by ID
+  /api/asignaturas     - List all subjects
+  /api/asignaturas/{id}- Get subject by ID
+
+SAMPLE DATA INCLUDED:
+  - 4 Professors (McGonagall, Snape, Flitwick, Sprout)
+  - 4 Houses (Gryffindor, Slytherin, Ravenclaw, Hufflepuff)
+  - 3 Students (Harry Potter, Hermione Granger, Ron Weasley)
+  - 3 Pets (Hedwig, Crookshanks, Scabbers)
+  - 4 Subjects (Potions, Transfiguration, Charms, Herbology)
+  - Student-Subject grades for all students
+
+DATABASE: PostgreSQL (configurable via environment variables)
