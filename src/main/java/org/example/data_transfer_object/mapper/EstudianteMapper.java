@@ -1,6 +1,7 @@
 package org.example.data_transfer_object.mapper;
 
 import org.example.data_transfer_object.dto.AsignaturaCalificacionDTO;
+import org.example.data_transfer_object.dto.EstudianteCreateDTO;
 import org.example.data_transfer_object.dto.EstudianteDTO;
 import org.example.data_transfer_object.dto.MascotaDTO;
 import org.example.data_transfer_object.entity.Estudiante;
@@ -45,5 +46,34 @@ public class EstudianteMapper {
             mascotaDTO,
             asignaturas
         );
+    }
+
+    public Estudiante toEntity(EstudianteCreateDTO createDTO) {
+        if (createDTO == null) {
+            return null;
+        }
+
+        Estudiante estudiante = new Estudiante();
+        estudiante.setNombre(createDTO.getNombre());
+        estudiante.setAnyoCurso(createDTO.getAnyoCurso());
+        estudiante.setFechaNacimiento(createDTO.getFechaNacimiento());
+
+        // La casa se asignará en el servicio, no en el DTO de creación
+        // La mascota se asignará después de guardar el estudiante
+
+        return estudiante;
+    }
+
+    public void updateEntity(EstudianteCreateDTO updateDTO, Estudiante estudiante) {
+        if (updateDTO == null || estudiante == null) {
+            return;
+        }
+
+        estudiante.setNombre(updateDTO.getNombre());
+        estudiante.setAnyoCurso(updateDTO.getAnyoCurso());
+        estudiante.setFechaNacimiento(updateDTO.getFechaNacimiento());
+
+        // La casa se actualizará en el servicio, no en el DTO de actualización
+        // La mascota se actualizará después de guardar el estudiante
     }
 }
